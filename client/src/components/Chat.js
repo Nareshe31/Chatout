@@ -135,6 +135,8 @@ class Chat extends Component {
                 }
                 this.setState({allChats:allChatsDum,currentChat:chat,allMessages:response.data.messages})
             } catch (error) {
+                let allChatsDum=this.state.allChats
+                this.setState({allChats:allChatsDum,currentChat:chat,allMessages:[]})
                 console.log("Error occurred",error.message || error.stack);
             }
         }
@@ -172,7 +174,7 @@ class Chat extends Component {
                     }
                 }
                 let allChatsDum=this.statePush("allChats",newChat)
-                this.setState({allChats:allChatsDum,search_name:"",currentChat:newChat,allUsers:getUsers(allChatsDum)})
+                this.setState({allChats:allChatsDum,search_name:"",currentChat:newChat,allUsers:getUsers(allChatsDum),allMessages:[]})
             }
         }
         
